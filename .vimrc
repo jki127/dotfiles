@@ -1,1 +1,91 @@
-/Users/CPGuestOrange/.vimrc
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+autocmd VimEnter * NERDTree
+set background=dark
+autocmd
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+" alternatively, pass a path where Vundle should install plugins
+"let path = '~/some/path/here'
+"call vundle#rc(path)
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/vundle'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between here and filetype plugin indent on.
+" scripts on GitHub repos
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'tpope/vim-rails.git'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'rking/ag.vim'
+Plugin 'itspriddle/vim-stripper'
+Plugin 'bkad/CamelCaseMotion'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'kien/ctrlp.vim'
+Plugin 'FelikZ/ctrlp-py-matcher'
+
+
+" scripts from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+Plugin 'FuzzyFinder'
+Plugin 'The-NERD-tree'
+Plugin 'Solarized'
+
+" scripts not on GitHub
+
+" git repos on your local machine (i.e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+" ...
+
+filetype plugin indent on     " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList          - list configured plugins
+" :PluginInstall(!)    - install (update) plugins
+" :PluginSearch(!) foo - search (or refresh cache first) for foo
+" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Plugin commands are not allowed.
+" Put your stuff after this line
+
+colorscheme solarized
+set number
+set noswapfile
+set tabstop=2 shiftwidth=2 expandtab
+set hlsearch " turn on search highlighting
+syntax enable
+
+" make ctrlp use ag.vim
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
+
+"Open NERDTree on space double-tap
+nnoremap <space><space> :NERDTreeToggle<cr>
+"Open NERDTree with current file highlighted on space-f
+nnoremap <space>f :NERDTreeFind<cr>
+
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } "make CtrlP faster with py-matcher
+let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
+" Do not clear filenames cache, to improve CtrlP startup
+" You can manualy clear it by <F5>
+let g:ctrlp_clear_cache_on_exit = 0
+" Set no file limit
+let g:ctrlp_max_files = 0
+
+" Prevent silver_searcher from auto-opening first result
+ca Ag Ag!
