@@ -79,6 +79,9 @@ nnoremap <space><space> :NERDTreeToggle<cr>
 "Open NERDTree with current file highlighted on space-f
 nnoremap <space>f :NERDTreeFind<cr>
 
+"Close a quickfix list (ex: Ag)
+nnoremap <Esc><Esc> :ccl<cr>
+
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } "make CtrlP faster with py-matcher
 let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
 " Do not clear filenames cache, to improve CtrlP startup
