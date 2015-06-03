@@ -1,12 +1,38 @@
+set mouse=a
+set number
+
+colorscheme solarized
+
+set hidden
+set autoindent
+set copyindent
+set showmatch
+set ignorecase " ignore case when searching
+set smartcase  " ignore case if search pattern is all lowercase
+set smarttab "insert tabs on the start of a line according to shiftwidth, not tabstop
+set incsearch "show search matches as you type
+set colorcolumn=80
+
+set undolevels=1000 " remembers muchos levels of undo
+set visualbell "don't beep
+set noerrorbells "don't beep
+set title "change the terminal title
+
+set nobackup
+
+set guioptions-=m  "remove menu bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=L  "remove left-hand scroll bar
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 autocmd VimEnter * NERDTree
 set background=dark
-autocmd
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 " alternatively, pass a path where Vundle should install plugins
 "let path = '~/some/path/here'
@@ -30,7 +56,8 @@ Plugin 'bkad/CamelCaseMotion'
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'kien/ctrlp.vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
-
+Plugin 'scrooloose/syntastic'
+Plugin 'drmikehenry/vim-fontsize'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -58,8 +85,6 @@ filetype plugin indent on     " required
 " NOTE: comments after Plugin commands are not allowed.
 " Put your stuff after this line
 
-colorscheme solarized
-set number
 set noswapfile
 set tabstop=2 shiftwidth=2 expandtab
 set hlsearch " turn on search highlighting
@@ -92,3 +117,12 @@ let g:ctrlp_max_files = 0
 
 " Prevent silver_searcher from auto-opening first result
 ca Ag Ag!
+
+" Syntastic recommended settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
