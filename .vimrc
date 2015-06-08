@@ -58,6 +58,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'scrooloose/syntastic'
 Plugin 'drmikehenry/vim-fontsize'
+Plugin 'slim-template/vim-slim'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
