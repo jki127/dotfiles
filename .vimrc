@@ -19,6 +19,7 @@ set noerrorbells "don't beep
 set title "change the terminal title
 
 set nobackup
+set nowritebackup
 
 set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
@@ -59,6 +60,7 @@ Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'scrooloose/syntastic'
 Plugin 'drmikehenry/vim-fontsize'
 Plugin 'slim-template/vim-slim'
+Plugin 'fatih/vim-go'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -118,6 +120,8 @@ let g:ctrlp_max_files = 0
 
 " Prevent silver_searcher from auto-opening first result
 ca Ag Ag!
+ca ag Ag!
+ca AG Ag!
 
 " Syntastic recommended settings
 set statusline+=%#warningmsg#
