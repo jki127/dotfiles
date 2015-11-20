@@ -94,7 +94,7 @@ set hlsearch " turn on search highlighting
 syntax enable
 
 " make ctrlp use ag.vim
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+let g:ctrlp_user_command = 'Ag %s -i --nocolor --nogroup --hidden
       \ --ignore .git
       \ --ignore .svn
       \ --ignore .hg
