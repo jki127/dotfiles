@@ -13,6 +13,7 @@ ZSH_THEME="agnoster"
 
 alias gpr="git pull --rebase"
 alias gap="git add -p"
+alias be="bundle exec"
 
 # Set this to use case-sensitive completion
 # CASE_SENSITIVE="true"
