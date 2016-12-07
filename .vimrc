@@ -59,8 +59,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'scrooloose/syntastic'
 Plugin 'drmikehenry/vim-fontsize'
-Plugin 'slim-template/vim-slim'
-Plugin 'fatih/vim-go'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -122,6 +120,9 @@ let g:ctrlp_max_files = 0
 ca Ag Ag!
 ca ag Ag!
 ca AG Ag!
+
+""
+command Light set background=light
 
 " Syntastic recommended settings
 set statusline+=%#warningmsg#

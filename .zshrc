@@ -70,3 +70,4 @@ export PATH="$PATH:/usr/local/bin:/usr/local/heroku/bin:/usr/lib/lightdm/lightdm
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+export PATH="/Users/jayson/gcc-cross/toolchain/bin":"$PATH"
