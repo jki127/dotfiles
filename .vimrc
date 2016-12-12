@@ -30,7 +30,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 autocmd VimEnter * NERDTree
-set background=dark
+set background=light
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -123,6 +123,7 @@ ca AG Ag!
 
 ""
 command Light set background=light
+command Dark set background=dark
 
 " Syntastic recommended settings
 set statusline+=%#warningmsg#
