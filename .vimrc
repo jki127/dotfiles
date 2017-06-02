@@ -2,6 +2,7 @@ set mouse=a
 set number
 
 colorscheme solarized
+set guifont=DejaVu\ Sans\ Mono:h14
 
 set hidden
 set autoindent
