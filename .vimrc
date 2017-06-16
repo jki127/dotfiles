@@ -2,7 +2,7 @@ set mouse=a
 set number
 
 colorscheme solarized
-set guifont=DejaVu\ Sans\ Mono:h14
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
 
 set hidden
 set autoindent
@@ -60,6 +60,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'scrooloose/syntastic'
 Plugin 'drmikehenry/vim-fontsize'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -126,6 +130,9 @@ ca AG Ag!
 command Light set background=light
 command Dark set background=dark
 
+" Add default mappings
+call camelcasemotion#CreateMotionMappings('<leader>')
+
 " Syntastic recommended settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -134,3 +141,11 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" turn off html syntax warnings
+let g:syntastic_html_tidy_quiet_messages = { "level" : ["warnings"] }
+
+" always show status bar (airline)
+set laststatus=2
+" Airline config
+let g:airline_powerline_fonts = 1
