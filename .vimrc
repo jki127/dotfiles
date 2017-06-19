@@ -64,6 +64,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'matze/vim-move'
+" Tagbar requires ctags: https://github.com/universal-ctags/ctags
+Plugin 'majutsushi/tagbar'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -149,3 +152,6 @@ let g:syntastic_html_tidy_quiet_messages = { "level" : ["warnings"] }
 set laststatus=2
 " Airline config
 let g:airline_powerline_fonts = 1
+
+" set vim-move key to Ctrl
+let g:move_key_modifier = 'C'
