@@ -67,6 +67,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'matze/vim-move'
 " Tagbar requires ctags: https://github.com/universal-ctags/ctags
 Plugin 'majutsushi/tagbar'
+" Install tern server using npm install in ~/.vim/bundle/tern-for-vim
+" Install jsctags alongside tern for more useful tagbar info: https://github.com/ramitos/jsctags
+Plugin 'ternjs/tern_for_vim'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
