@@ -46,8 +46,6 @@ Plugin 'gmarik/vundle'
 " The following are examples of different formats supported.
 " Keep Plugin commands between here and filetype plugin indent on.
 " scripts on GitHub repos
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-rails.git'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'rking/ag.vim'
@@ -158,3 +156,6 @@ let g:airline_powerline_fonts = 1
 
 " set vim-move key to Ctrl
 let g:move_key_modifier = 'C'
+
+" toggle tagbar with space-t
+nmap <space>t :TagbarToggle<CR>
