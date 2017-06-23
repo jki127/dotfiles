@@ -148,6 +148,8 @@ let g:syntastic_check_on_wq = 0
 
 " turn off html syntax warnings
 let g:syntastic_html_tidy_quiet_messages = { "level" : ["warnings"] }
+" use ESLint for JS files
+let g:syntastic_javascript_checkers = ['eslint']
 
 " always show status bar (airline)
 set laststatus=2
@@ -159,3 +161,6 @@ let g:move_key_modifier = 'C'
 
 " toggle tagbar with space-t
 nmap <space>t :TagbarToggle<CR>
+
+" Enable JSX Syntax Highlighing in javascript files
+let g:jsx_ext_required = 0
