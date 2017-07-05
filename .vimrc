@@ -68,6 +68,7 @@ Plugin 'majutsushi/tagbar'
 " Install tern server using npm install in ~/.vim/bundle/tern-for-vim
 " Install jsctags alongside tern for more useful tagbar info: https://github.com/ramitos/jsctags
 Plugin 'ternjs/tern_for_vim'
+Plugin 'tpope/vim-surround'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
