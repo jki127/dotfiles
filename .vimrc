@@ -31,7 +31,8 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 autocmd VimEnter * NERDTree
-set background=light
+let NERDTreeShowHidden=1
+set background=dark
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -165,3 +166,6 @@ nmap <space>t :TagbarToggle<CR>
 
 " Enable JSX Syntax Highlighing in javascript files
 let g:jsx_ext_required = 0
+
+" Enable sparkup plugin in JSX
+autocmd FileType javascript.jsx runtime! ftplugin/html/sparkup.vim
