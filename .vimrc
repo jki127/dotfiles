@@ -2,7 +2,7 @@ set mouse=a
 set number
 
 colorscheme solarized
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16
 
 set hidden
 set autoindent
@@ -70,6 +70,8 @@ Plugin 'majutsushi/tagbar'
 " Install jsctags alongside tern for more useful tagbar info: https://github.com/ramitos/jsctags
 Plugin 'ternjs/tern_for_vim'
 Plugin 'tpope/vim-surround'
+Plugin 'mtscout6/syntastic-local-eslint.vim'
+Plugin 'mitermayer/vim-prettier'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -169,3 +171,8 @@ let g:jsx_ext_required = 0
 
 " Enable sparkup plugin in JSX
 autocmd FileType javascript.jsx runtime! ftplugin/html/sparkup.vim
+
+" Prettier options
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#trailing_comma = 'all'
+let g:prettier#config#bracket_spacing = 'true'
