@@ -32,7 +32,7 @@ filetype off                  " required
 
 autocmd VimEnter * NERDTree
 let NERDTreeShowHidden=1
-set background=dark
+set background=light
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -105,13 +105,45 @@ set hlsearch " turn on search highlighting
 syntax enable
 
 " make ctrlp use ag.vim
-let g:ctrlp_user_command = 'Ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore "**/*.pyc"
-      \ -g ""'
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Prevent silver_searcher from auto-opening first result
+  ca Ag Ag!
+  ca ag Ag!
+  ca AG Ag!
+
+  let g:ag_prg = 'ag --vimgrep
+    \ --ignore .git
+    \ --ignore .svn
+    \ --ignore .hg
+    \ --ignore .DS_Store
+    \ --ignore "**/*.pyc"
+    \ --ignore node_modules'
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""
+    \ --ignore .git
+    \ --ignore .svn
+    \ --ignore .hg
+    \ --ignore .DS_Store
+    \ --ignore "**/*.pyc"
+    \ --ignore node_modules'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
+" Do not clear filenames cache, to improve CtrlP startup
+" You can manualy clear it by <F5>
+let g:ctrlp_clear_cache_on_exit = 0
+" Set no file limit
+let g:ctrlp_max_files = 0
+
+" bind K to grep word under cursor
+nnoremap K :Ag! "<cword>"<cr>
 
 "Open NERDTree on space double-tap
 nnoremap <space><space> :NERDTreeToggle<cr>
@@ -120,19 +152,6 @@ nnoremap <space>f :NERDTreeFind<cr>
 
 "Close a quickfix list (ex: Ag)
 nnoremap <Esc><Esc> :ccl<cr>
-
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' } "make CtrlP faster with py-matcher
-let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
-" Do not clear filenames cache, to improve CtrlP startup
-" You can manualy clear it by <F5>
-let g:ctrlp_clear_cache_on_exit = 0
-" Set no file limit
-let g:ctrlp_max_files = 0
-
-" Prevent silver_searcher from auto-opening first result
-ca Ag Ag!
-ca ag Ag!
-ca AG Ag!
 
 ""
 command Light set background=light
@@ -174,5 +193,5 @@ autocmd FileType javascript.jsx runtime! ftplugin/html/sparkup.vim
 
 " Prettier options
 let g:prettier#config#single_quote = 'true'
-let g:prettier#config#trailing_comma = 'all'
+let g:prettier#config#trailing_comma = 'es5'
 let g:prettier#config#bracket_spacing = 'true'
