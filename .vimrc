@@ -30,8 +30,6 @@ set guioptions-=L  "remove left-hand scroll bar
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-autocmd VimEnter * NERDTree
-let NERDTreeShowHidden=1
 set background=light
 
 " set the runtime path to include Vundle and initialize
@@ -70,11 +68,12 @@ Plugin 'ternjs/tern_for_vim'
 Plugin 'tpope/vim-surround'
 Plugin 'mtscout6/syntastic-local-eslint.vim'
 Plugin 'mitermayer/vim-prettier'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/unite.vim' " required by vimfiler
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 Plugin 'FuzzyFinder'
-Plugin 'The-NERD-tree'
 Plugin 'Solarized'
 
 " scripts not on GitHub
@@ -101,6 +100,35 @@ set noswapfile
 set tabstop=2 shiftwidth=2 expandtab
 set hlsearch " turn on search highlighting
 syntax enable
+
+" VIMFiler Options
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_tree_leaf_icon = " "
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = '-'
+let g:vimfiler_marked_file_icon = '✓'
+let g:vimfiler_readonly_file_icon = '✗'
+let g:vimfiler_time_format = '%m-%d-%y %H:%M:%S'
+let g:vimfiler_expand_jump_to_first_child = 0
+let g:vimfiler_ignore_pattern = '\.git\|\.DS_Store\|\.pyc'
+
+nnoremap <space><space> :<C-u>VimFilerExplorer -split -simple -parent -winwidth=35 -toggle -no-quit<CR>
+nnoremap <space>f :<C-u>VimFilerExplorer -split -simple -parent -winwidth=35 -no-quit -find<CR>
+" Expand directory using Enter
+autocmd FileType vimfiler nmap <silent><buffer><expr> <CR> vimfiler#smart_cursor_map(
+\ "\<Plug>(vimfiler_expand_tree)",
+\ "\<Plug>(vimfiler_edit_file)")
+autocmd FileType vimfiler nunmap <buffer> x
+autocmd FileType vimfiler nmap <buffer> x <Plug>(vimfiler_toggle_mark_current_line)
+autocmd FileType vimfiler vmap <buffer> x <Plug>(vimfiler_toggle_mark_selected_lines)
+autocmd FileType vimfiler nunmap <buffer> l
+autocmd FileType vimfiler nmap <buffer> l <Plug>(vimfiler_cd_or_edit)
+autocmd FileType vimfiler nmap <buffer> u <Plug>(vimfiler_switch_to_parent_directory)
+autocmd FileType vimfiler nmap <buffer> <C-R> <Plug>(vimfiler_redraw_screen)
+
+
 
 " make ctrlp use ag.vim
 if executable('ag')
@@ -143,15 +171,9 @@ let g:ctrlp_max_files = 0
 " bind K to grep word under cursor
 nnoremap K :Ag! "<cword>"<cr>
 
-"Open NERDTree on space double-tap
-nnoremap <space><space> :NERDTreeToggle<cr>
-"Open NERDTree with current file highlighted on space-f
-nnoremap <space>f :NERDTreeFind<cr>
-
 "Close a quickfix list (ex: Ag)
 nnoremap <Esc><Esc> :ccl<cr>
 
-""
 command Light set background=light
 command Dark set background=dark
 
@@ -194,3 +216,5 @@ let g:prettier#config#single_quote = 'true'
 let g:prettier#config#trailing_comma = 'es5'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
+
+
