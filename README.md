@@ -17,3 +17,4 @@
 | K | new directory |
 | N | new file |
 | d | delete file |
+| E | open file in v-split |

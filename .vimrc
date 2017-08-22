@@ -54,7 +54,6 @@ Plugin 'bkad/CamelCaseMotion'
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/syntastic'
 Plugin 'drmikehenry/vim-fontsize'
 Plugin 'neoclide/vim-jsx-improve'
 Plugin 'vim-airline/vim-airline'
@@ -66,10 +65,10 @@ Plugin 'majutsushi/tagbar'
 " Install jsctags alongside tern for more useful tagbar info: https://github.com/ramitos/jsctags
 Plugin 'ternjs/tern_for_vim'
 Plugin 'tpope/vim-surround'
-Plugin 'mtscout6/syntastic-local-eslint.vim'
 Plugin 'mitermayer/vim-prettier'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'Shougo/unite.vim' " required by vimfiler
+Plugin 'w0rp/ale'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -180,23 +179,8 @@ command Dark set background=dark
 " Add default mappings
 call camelcasemotion#CreateMotionMappings('<leader>')
 
-" Syntastic recommended settings
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-" turn off html syntax warnings
-let g:syntastic_html_tidy_quiet_messages = { "level" : ["warnings"] }
-" use ESLint for JS files
-let g:syntastic_javascript_checkers = ['eslint']
-
-" always show status bar (airline)
-set laststatus=2
 " Airline config
+set laststatus=2 " always show status bar (airline)
 let g:airline_powerline_fonts = 1
 
 " set vim-move key to Ctrl
@@ -217,4 +201,19 @@ let g:prettier#config#trailing_comma = 'es5'
 let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 
+" ALE Config
+let g:ale_open_list = 1
+let g:ale_set_quickfix = 1
+let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = '😡'
 
+let g:javascript_prettier_options = '--single_quote true --trailing-comma es5 --no-bracket-spacing true --jsx-bracket-same-line false'
+
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\}
+
+let g:ale_fixers = {
+\   'javascript': ['prettier', 'eslint'],
+\   'ruby': ['ruby'],
+\}
