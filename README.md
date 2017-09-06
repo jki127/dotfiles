@@ -17,4 +17,6 @@
 | K | new directory |
 | N | new file |
 | d | delete file |
-| E | open file in v-split |
+| s | open file in v-split |
+| h | open file in h-split |
+| t | open file in new tab |

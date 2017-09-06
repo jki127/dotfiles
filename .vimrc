@@ -126,7 +126,12 @@ autocmd FileType vimfiler nunmap <buffer> l
 autocmd FileType vimfiler nmap <buffer> l <Plug>(vimfiler_cd_or_edit)
 autocmd FileType vimfiler nmap <buffer> u <Plug>(vimfiler_switch_to_parent_directory)
 autocmd FileType vimfiler nmap <buffer> <C-R> <Plug>(vimfiler_redraw_screen)
-
+" Allow double-click to edit file
+autocmd FileType vimfiler nmap <silent><buffer> <2-LeftMouse> <Plug>(vimfiler_expand_or_edit)
+" Open files in new split/tab
+autocmd FileType vimfiler nnoremap <silent><buffer><expr> s vimfiler#do_switch_action('vsplit')
+autocmd FileType vimfiler nnoremap <silent><buffer><expr> h vimfiler#do_switch_action('split')
+autocmd FileType vimfiler nnoremap <silent><buffer><expr> t vimfiler#do_action('tabopen')
 
 
 " make ctrlp use ag.vim
@@ -211,9 +216,18 @@ let g:javascript_prettier_options = '--single_quote true --trailing-comma es5 --
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'ruby': ['rubocop'],
 \}
 
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
-\   'ruby': ['ruby'],
+\   'ruby': ['rubocop'],
 \}
+
+"Highlight current line
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+
