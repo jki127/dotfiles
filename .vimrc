@@ -13,6 +13,7 @@ set smartcase  " ignore case if search pattern is all lowercase
 set smarttab "insert tabs on the start of a line according to shiftwidth, not tabstop
 set incsearch "show search matches as you type
 set colorcolumn=80
+set backspace=indent,eol,start
 
 set undolevels=1000 " remembers muchos levels of undo
 set visualbell "don't beep
@@ -210,7 +211,6 @@ let g:prettier#config#jsx_bracket_same_line = 'false'
 let g:ale_open_list = 1
 let g:ale_set_quickfix = 1
 let g:airline#extensions#ale#enabled = 1
-let g:ale_sign_error = '😡'
 
 let g:javascript_prettier_options = '--single_quote true --trailing-comma es5 --no-bracket-spacing true --jsx-bracket-same-line false'
 
