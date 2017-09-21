@@ -1,7 +1,6 @@
 set mouse=a
 set number
 
-colorscheme solarized
 set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16
 
 set hidden
@@ -28,20 +27,21 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible " required by vundle
+filetype off " required by vundle
 
-set background=light
+colorscheme solarized
+set background=dark
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
+call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "let path = '~/some/path/here'
 "call vundle#rc(path)
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/vundle'
+" require by vundle
+Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between here and filetype plugin indent on.
@@ -81,20 +81,9 @@ Plugin 'Solarized'
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/gmarik/path/to/plugin'
 " ...
+call vundle#end()
 
-filetype plugin indent on     " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList          - list configured plugins
-" :PluginInstall(!)    - install (update) plugins
-" :PluginSearch(!) foo - search (or refresh cache first) for foo
-" :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Plugin commands are not allowed.
-" Put your stuff after this line
+filetype plugin indent on " required by vundle
 
 set noswapfile
 set tabstop=2 shiftwidth=2 expandtab
@@ -208,6 +197,7 @@ let g:prettier#config#bracket_spacing = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'false'
 
 " ALE Config
+let g:ale_enabled = 0
 let g:ale_open_list = 1
 let g:ale_set_quickfix = 1
 let g:airline#extensions#ale#enabled = 1

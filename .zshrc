@@ -16,6 +16,8 @@ ZSH_THEME="spaceship"
 alias gpr="git pull --rebase"
 alias gap="git add -p"
 alias be="bundle exec"
+alias gsearch="git branch -a | grep "
+alias rubodiff="git status --porcelain | cut -c4- | grep '.rb' | xargs rubocop"
 
 # Set this to use case-sensitive completion
 # CASE_SENSITIVE="true"
