@@ -78,6 +78,3 @@ export PATH="/Users/jayson/gcc-cross/toolchain/bin":"$PATH"
 
 # Facebook File PathPicker Variables
 export FPP_EDITOR="mvim -p"
-
-
-source "/Users/jisaac/.oh-my-zsh/custom/themes/spaceship.zsh-theme"
