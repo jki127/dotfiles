@@ -63,6 +63,7 @@ Plugin 'matze/vim-move'
 " Tagbar requires ctags: https://github.com/universal-ctags/ctags
 Plugin 'majutsushi/tagbar'
 " Install tern server using npm install in ~/.vim/bundle/tern-for-vim
+" Install exuberant ctags via `brew install ctags`
 " Install jsctags alongside tern for more useful tagbar info: https://github.com/ramitos/jsctags
 Plugin 'ternjs/tern_for_vim'
 Plugin 'tpope/vim-surround'
