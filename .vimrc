@@ -1,7 +1,7 @@
 set mouse=a
 set number
 
-set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h16
+set guifont=Meslo\ LG\ L\ DZ\ Regular\ for\ Powerline:h14
 
 set hidden
 set autoindent
