@@ -1,3 +1,4 @@
+set nocompatible " required by vundle
 set mouse=a
 set number
 
@@ -27,7 +28,6 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
-set nocompatible " required by vundle
 filetype off " required by vundle
 
 colorscheme solarized
@@ -71,6 +71,10 @@ Plugin 'mitermayer/vim-prettier'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'Shougo/unite.vim' " required by vimfiler
 Plugin 'w0rp/ale'
+Plugin 'vim-scripts/AutoComplPop'
+Plugin 'ervandew/supertab'
+Plugin 'mkitt/tabline.vim'
+Plugin 'jiangmiao/auto-pairs'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -222,3 +226,5 @@ augroup CursorLine
   au WinLeave * setlocal nocursorline
 augroup END
 
+" Supertab config
+let g:SuperTabDefaultCompletionType = "<c-n>"

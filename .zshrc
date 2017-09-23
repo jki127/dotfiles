@@ -72,9 +72,10 @@ export PATH="$PATH:/usr/local/bin:/usr/local/heroku/bin:/usr/lib/lightdm/lightdm
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-export PATH="/Users/jayson/gcc-cross/toolchain/bin":"$PATH"
+# required for rbenv
+export PATH="$PATH:~/.rbenv/shims"
+eval "$(rbenv init -)"
+alias pudo='pkill -USR1 puma-dev'
 
 # Facebook File PathPicker Variables
 export FPP_EDITOR="mvim -p"
