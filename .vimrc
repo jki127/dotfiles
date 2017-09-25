@@ -30,9 +30,6 @@ set guioptions-=L  "remove left-hand scroll bar
 
 filetype off " required by vundle
 
-colorscheme solarized
-set background=dark
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -75,11 +72,11 @@ Plugin 'vim-scripts/AutoComplPop'
 Plugin 'ervandew/supertab'
 Plugin 'mkitt/tabline.vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'rakr/vim-one' " OneLight/OneDark Color Scheme
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
 Plugin 'FuzzyFinder'
-Plugin 'Solarized'
 
 " scripts not on GitHub
 
@@ -88,6 +85,8 @@ Plugin 'Solarized'
 " ...
 call vundle#end()
 
+colorscheme one
+set background=light
 filetype plugin indent on " required by vundle
 
 set noswapfile
@@ -182,6 +181,7 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 " Airline config
 set laststatus=2 " always show status bar (airline)
 let g:airline_powerline_fonts = 1
+let g:airline_theme='one'
 
 " set vim-move key to Ctrl
 let g:move_key_modifier = 'C'
