@@ -2,7 +2,7 @@ set nocompatible " required by vundle
 set mouse=a
 set number
 
-set guifont=Meslo\ LG\ L\ DZ\ Regular\ for\ Powerline:h14
+set guifont=Meslo\ LG\ L\ DZ\ Regular\ for\ Powerline:h18
 
 set hidden
 set autoindent
