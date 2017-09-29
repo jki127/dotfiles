@@ -45,13 +45,11 @@ Plugin 'VundleVim/Vundle.vim'
 " scripts on GitHub repos
 Plugin 'tpope/vim-rails.git'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'rking/ag.vim'
 Plugin 'itspriddle/vim-stripper'
 Plugin 'bkad/CamelCaseMotion'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'kien/ctrlp.vim'
 Plugin 'drmikehenry/vim-fontsize'
 Plugin 'neoclide/vim-jsx-improve'
 Plugin 'vim-airline/vim-airline'
@@ -127,49 +125,7 @@ autocmd FileType vimfiler nnoremap <silent><buffer><expr> s vimfiler#do_switch_a
 autocmd FileType vimfiler nnoremap <silent><buffer><expr> h vimfiler#do_switch_action('split')
 autocmd FileType vimfiler nnoremap <silent><buffer><expr> t vimfiler#do_action('tabopen')
 
-
-" make ctrlp use ag.vim
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Prevent silver_searcher from auto-opening first result
-  ca Ag Ag!
-  ca ag Ag!
-  ca AG Ag!
-
-  let g:ag_prg = 'ag --vimgrep
-    \ --ignore .git
-    \ --ignore .svn
-    \ --ignore .hg
-    \ --ignore .DS_Store
-    \ --ignore "**/*.pyc"
-    \ --ignore node_modules'
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""
-    \ --ignore .git
-    \ --ignore .svn
-    \ --ignore .hg
-    \ --ignore .DS_Store
-    \ --ignore "**/*.pyc"
-    \ --ignore node_modules'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-let g:ctrlp_lazy_update = 350 " Set delay to prevent extra search
-" Do not clear filenames cache, to improve CtrlP startup
-" You can manualy clear it by <F5>
-let g:ctrlp_clear_cache_on_exit = 0
-" Set no file limit
-let g:ctrlp_max_files = 0
-
-" bind K to grep word under cursor
-nnoremap K :Ag! "<cword>"<cr>
-
-"Close a quickfix list (ex: Ag)
+"Close a quickfix list
 nnoremap <Esc><Esc> :ccl<cr>
 
 command Light set background=light
