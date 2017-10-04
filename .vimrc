@@ -84,7 +84,7 @@ Plugin 'FuzzyFinder'
 call vundle#end()
 
 colorscheme one
-set background=light
+set background=dark
 filetype plugin indent on " required by vundle
 
 set noswapfile
