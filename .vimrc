@@ -139,7 +139,6 @@ call camelcasemotion#CreateMotionMappings('<leader>')
 " Airline config
 set laststatus=2 " always show status bar (airline)
 let g:airline_powerline_fonts = 1
-let g:airline_theme='one'
 
 " set vim-move key to Ctrl
 let g:move_key_modifier = 'C'
@@ -207,3 +206,15 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 let g:fzf_buffers_jump = 1
 nnoremap <C-p> :FZF<CR>
+nnoremap K :Ag! <cword><cr>
+
+" vim-one config
+let g:airline_theme='one'
+let g:one_allow_italics = 1
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+  set termguicolors
+endif
