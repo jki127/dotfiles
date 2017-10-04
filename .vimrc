@@ -71,6 +71,8 @@ Plugin 'ervandew/supertab'
 Plugin 'mkitt/tabline.vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'rakr/vim-one' " OneLight/OneDark Color Scheme
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -184,3 +186,24 @@ augroup END
 
 " Supertab config
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" FZF config
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit' }
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
+let g:fzf_buffers_jump = 1
+nnoremap <C-p> :FZF<CR>
