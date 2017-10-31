@@ -44,14 +44,12 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between here and filetype plugin indent on.
 " scripts on GitHub repos
 Plugin 'tpope/vim-rails.git'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'itspriddle/vim-stripper'
 Plugin 'bkad/CamelCaseMotion'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'drmikehenry/vim-fontsize'
-Plugin 'neoclide/vim-jsx-improve'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'matze/vim-move'
@@ -73,6 +71,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'rakr/vim-one' " OneLight/OneDark Color Scheme
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+Plugin 'sheerun/vim-polyglot'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -149,9 +148,6 @@ nmap <space>t :TagbarToggle<CR>
 " Enable JSX Syntax Highlighing in javascript files
 let g:jsx_ext_required = 0
 
-" Enable sparkup plugin in JSX
-autocmd FileType javascript.jsx runtime! ftplugin/html/sparkup.vim
-
 " Prettier options
 let g:prettier#exec_cmd_async = 1
 let g:prettier#config#single_quote = 'true'
@@ -219,3 +215,7 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
+
+" Enable sparkup in JSX
+autocmd FileType javascript,jsx runtime! ftplugin/html/sparkup.vim
+
