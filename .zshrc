@@ -79,3 +79,8 @@ alias pudo='pkill -USR1 puma-dev'
 
 # Facebook File PathPicker Variables
 export FPP_EDITOR="mvim -p"
+
+# Android Variables
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools

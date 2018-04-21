@@ -166,11 +166,13 @@ let g:javascript_prettier_options = '--single_quote true --trailing-comma es5 --
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'ruby': ['rubocop'],
+\   'cpp': ['g++'],
 \}
 
 let g:ale_fixers = {
 \   'javascript': ['prettier', 'eslint'],
 \   'ruby': ['rubocop'],
+\   'cpp': ['clang-format'],
 \}
 
 "Highlight current line
@@ -219,3 +221,5 @@ endif
 " Enable sparkup in JSX
 autocmd FileType javascript,jsx runtime! ftplugin/html/sparkup.vim
 
+" Remove delay before opening newline 'O'
+set timeoutlen=1000 ttimeoutlen=0
