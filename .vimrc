@@ -72,6 +72,7 @@ Plugin 'rakr/vim-one' " OneLight/OneDark Color Scheme
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'sheerun/vim-polyglot'
+Plugin 'tpope/vim-commentary'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
