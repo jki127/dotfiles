@@ -224,3 +224,6 @@ autocmd FileType javascript,jsx runtime! ftplugin/html/sparkup.vim
 
 " Remove delay before opening newline 'O'
 set timeoutlen=1000 ttimeoutlen=0
+
+" Ignore these filetypes for autocomplete
+set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pdf,*.bak,*.beam,'/\./!d'
