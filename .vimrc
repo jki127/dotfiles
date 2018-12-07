@@ -73,6 +73,9 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'tpope/vim-commentary'
+Plugin 'fatih/vim-go'
+Plugin 'shmup/vim-sql-syntax'
+Plugin 'vim-scripts/SQLUtilities'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -227,3 +230,6 @@ set timeoutlen=1000 ttimeoutlen=0
 
 " Ignore these filetypes for autocomplete
 set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pdf,*.bak,*.beam,'/\./!d'
+
+" Disable dynamic sql completion
+let g:omni_sql_no_default_maps = 1

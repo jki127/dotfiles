@@ -88,4 +88,3 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # GO VARIABLES
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-
