@@ -2,14 +2,11 @@ set nocompatible " required by vundle
 set mouse=a
 set number
 
-set guifont=Meslo\ LG\ L\ DZ\ Regular\ for\ Powerline:h18
-
 set hidden
 set autoindent
 set copyindent
 set showmatch
 set ignorecase " ignore case when searching
-set smartcase  " ignore case if search pattern is all lowercase
 set smarttab "insert tabs on the start of a line according to shiftwidth, not tabstop
 set incsearch "show search matches as you type
 set colorcolumn=80
@@ -44,7 +41,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between here and filetype plugin indent on.
 " scripts on GitHub repos
 Plugin 'tpope/vim-rails.git'
-Plugin 'itspriddle/vim-stripper'
+Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'bkad/CamelCaseMotion'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
@@ -76,6 +73,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'fatih/vim-go'
 Plugin 'shmup/vim-sql-syntax'
 Plugin 'vim-scripts/SQLUtilities'
+Plugin 'lervag/vimtex'
 
 " scripts from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
@@ -221,6 +219,7 @@ endif
 if (has("termguicolors"))
   set termguicolors
 endif
+hi Conceal ctermfg=245 guifg=245
 
 " Enable sparkup in JSX
 autocmd FileType javascript,jsx runtime! ftplugin/html/sparkup.vim
@@ -229,7 +228,36 @@ autocmd FileType javascript,jsx runtime! ftplugin/html/sparkup.vim
 set timeoutlen=1000 ttimeoutlen=0
 
 " Ignore these filetypes for autocomplete
-set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pdf,*.bak,*.beam,'/\./!d'
+set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,*.pdf,*.bak,*.beam,'/\./!d',*.txt,*.rtf
 
 " Disable dynamic sql completion
 let g:omni_sql_no_default_maps = 1
+
+" Disable vim-polyglot for specified languages
+let g:polyglot_disabled = ['latex']
+
+" vimtex settings
+let g:tex_flavor='latex'
+let g:vimtex_view_method='skim'
+let g:vimtex_quickfix_mode=0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+" Settings for Haskell
+" Set indentation to 4
+autocmd FileType haskell setlocal shiftwidth=4 tabstop=4 softtabstop=4 expandtab
+let g:haskell_indent_if = 4
+let g:haskell_indent_case = 4
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 4
+let g:haskell_indent_before_where = 4
+let g:haskell_indent_after_bare_where = 4
+let g:haskell_indent_do = 4
+let g:haskell_indent_in = 4
+let g:haskell_indent_guard = 4
+let g:haskell_indent_case_alternative = 4
+
+" vim-better-whitespace settings
+let g:strip_whitespace_on_save = 1
+let g:better_whitespace_enabled=0 " Don't highlight trailing whitespace
+let g:strip_whitespace_confirm=0
