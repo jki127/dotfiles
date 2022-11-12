@@ -37,10 +37,7 @@ call vundle#begin()
 " require by vundle
 Plugin 'VundleVim/Vundle.vim'
 
-" The following are examples of different formats supported.
-" Keep Plugin commands between here and filetype plugin indent on.
-" scripts on GitHub repos
-Plugin 'tpope/vim-rails.git'
+Plugin 'vim-scripts/L9'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'bkad/CamelCaseMotion'
 " The sparkup vim script is in a subdirectory of this repo called vim.
@@ -52,10 +49,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'matze/vim-move'
 " Tagbar requires ctags: https://github.com/universal-ctags/ctags
 Plugin 'majutsushi/tagbar'
-" Install tern server using npm install in ~/.vim/bundle/tern-for-vim
 " Install exuberant ctags via `brew install ctags`
-" Install jsctags alongside tern for more useful tagbar info: https://github.com/ramitos/jsctags
-Plugin 'ternjs/tern_for_vim'
+" Install jsctags for more useful tagbar info: https://github.com/ramitos/jsctags
 Plugin 'tpope/vim-surround'
 Plugin 'mitermayer/vim-prettier'
 Plugin 'Shougo/vimfiler.vim'
@@ -74,24 +69,35 @@ Plugin 'fatih/vim-go'
 Plugin 'shmup/vim-sql-syntax'
 Plugin 'vim-scripts/SQLUtilities'
 Plugin 'lervag/vimtex'
+Plugin 'vim-scripts/FuzzyFinder'
 
-" scripts from http://vim-scripts.org/vim/scripts.html
-Plugin 'L9'
-Plugin 'FuzzyFinder'
-
-" scripts not on GitHub
-
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" ...
 call vundle#end()
 
-colorscheme one
-set background=dark
 filetype plugin indent on " required by vundle
+
+" Color Stuff
+if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  hi Conceal ctermfg=245 guifg=245
+endif
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+" vim-one color scheme config
+set background=dark
+colorscheme one
+let g:airline_theme='one'
+let g:one_allow_italics = 1
+
+" brogrammer color scheme config
+" colorscheme brogrammer
+" let g:airline_theme = 'minimalist'
 
 set noswapfile
 set tabstop=2 shiftwidth=2 expandtab
+"set tabstop=4 shiftwidth=4 expandtab
 set hlsearch " turn on search highlighting
 syntax enable
 
@@ -107,6 +113,7 @@ let g:vimfiler_readonly_file_icon = '✗'
 let g:vimfiler_time_format = '%m-%d-%y %H:%M:%S'
 let g:vimfiler_expand_jump_to_first_child = 0
 let g:vimfiler_ignore_pattern = '\.git\|\.DS_Store\|\.pyc'
+let g:vimfiler_ignore_filters = [''] " ignore wildignore
 
 nnoremap <space><space> :<C-u>VimFilerExplorer -split -simple -parent -winwidth=35 -toggle -no-quit<CR>
 nnoremap <space>f :<C-u>VimFilerExplorer -split -simple -parent -winwidth=35 -no-quit -find<CR>
@@ -152,18 +159,16 @@ let g:jsx_ext_required = 0
 
 " Prettier options
 let g:prettier#exec_cmd_async = 1
-let g:prettier#config#single_quote = 'true'
-let g:prettier#config#trailing_comma = 'es5'
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#jsx_bracket_same_line = 'false'
+"let g:prettier#config#single_quote = 'true'
+"let g:prettier#config#trailing_comma = 'es5'
+"let g:prettier#config#bracket_spacing = 'true'
+"let g:prettier#config#jsx_bracket_same_line = 'false'
 
 " ALE Config
 let g:ale_enabled = 0
 let g:ale_open_list = 1
 let g:ale_set_quickfix = 1
 let g:airline#extensions#ale#enabled = 1
-
-let g:javascript_prettier_options = '--single_quote true --trailing-comma es5 --no-bracket-spacing true --jsx-bracket-same-line false'
 
 let g:ale_linters = {
 \   'javascript': ['eslint'],
@@ -209,18 +214,6 @@ let g:fzf_buffers_jump = 1
 nnoremap <C-p> :FZF<CR>
 nnoremap K :Ag! <cword><cr>
 
-" vim-one config
-let g:airline_theme='one'
-let g:one_allow_italics = 1
-if (has("nvim"))
-  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-if (has("termguicolors"))
-  set termguicolors
-endif
-hi Conceal ctermfg=245 guifg=245
-
 " Enable sparkup in JSX
 autocmd FileType javascript,jsx runtime! ftplugin/html/sparkup.vim
 
@@ -233,15 +226,14 @@ set wildignore=.svn,CVS,.git,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.
 " Disable dynamic sql completion
 let g:omni_sql_no_default_maps = 1
 
-" Disable vim-polyglot for specified languages
-let g:polyglot_disabled = ['latex']
-
 " vimtex settings
 let g:tex_flavor='latex'
-let g:vimtex_view_method='skim'
+let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-set conceallevel=1
-let g:tex_conceal='abdmg'
+" let g:tex_conceal='abdmg'
+" Disable vim-polyglot for specified languages
+" let g:polyglot_disabled = ['latex']
+
 
 " Settings for Haskell
 " Set indentation to 4
@@ -252,7 +244,7 @@ let g:haskell_indent_let = 4
 let g:haskell_indent_where = 4
 let g:haskell_indent_before_where = 4
 let g:haskell_indent_after_bare_where = 4
-let g:haskell_indent_do = 4
+let g:haskell_indent_do = 0
 let g:haskell_indent_in = 4
 let g:haskell_indent_guard = 4
 let g:haskell_indent_case_alternative = 4
@@ -261,3 +253,13 @@ let g:haskell_indent_case_alternative = 4
 let g:strip_whitespace_on_save = 1
 let g:better_whitespace_enabled=0 " Don't highlight trailing whitespace
 let g:strip_whitespace_confirm=0
+
+" prolog settings
+" (must be commented out before writing Perl)
+autocmd BufNewFile,BufRead *.pl set syntax=prolog
+
+" COOL settings
+autocmd BufNewFile,BufRead *.cl set syntax=cool
+
+" ctags setup
+set tags=tags

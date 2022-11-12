@@ -91,3 +91,9 @@ export PATH=$PATH:$GOPATH/bin
 
 # Haskell environment
 source ~/.ghcup/env
+
+# Rust package manager
+export PATH="$HOME/.cargo/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="/usr/local/opt/python@3.8/bin:$PATH"
